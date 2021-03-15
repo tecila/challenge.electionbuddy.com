@@ -4,7 +4,7 @@ class CreateAudit < ActiveRecord::Migration[6.0]
       t.references :user, foreign_key: true
       t.string :auditable_type
       t.integer :auditable_id
-      t.json :changes
+      t.json :modifications
       t.index ["auditable_type", "auditable_id"]
 
       t.timestamps

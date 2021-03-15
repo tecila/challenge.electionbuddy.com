@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_03_15_112130) do
     t.integer "user_id"
     t.string "auditable_type"
     t.integer "auditable_id"
-    t.json "changes"
+    t.json "modifications"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["auditable_type", "auditable_id"], name: "index_audits_on_auditable_type_and_auditable_id"

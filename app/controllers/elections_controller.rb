@@ -25,7 +25,7 @@ class ElectionsController < ApplicationController
   # POST /elections
   # POST /elections.json
   def create
-    @election = Election.new(election_params.merge(user: current_user))
+    @election = Election.new(election_params)
 
     respond_to do |format|
       if @election.save
@@ -71,6 +71,6 @@ class ElectionsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def election_params
-    params.require(:election).permit(:name, :start_at, :end_at, :visibility)
+    params.require(:election).permit(:name, :start_at, :end_at, :visibility).merge(user: current_user)
   end
 end

@@ -5,12 +5,14 @@ module Auditable
     has_many :audits, as: :auditable
 
     after_save :create_audit
+
+    attr_accessor :user
   end
 
   def create_audit
     self.audits.create(
-      user: User.first,
-      changes: self.saved_changes
+      user: user,
+      modifications: self.saved_changes.except!('updated_at')
     )
   end
 end
